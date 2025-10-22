@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import ViewCounter from '../shared/ViewCounter'
 
 import { ContainerInner, ContainerOuter } from '@/components/layout/Container'
+// ... existing code ...
 import { footerItems } from '@/config/siteConfig'
 import { ThemeToggle } from '@/components/shared/ThemeToggle'
 import { name } from '@/config/infoConfig'
@@ -38,6 +40,7 @@ export function Footer() {
               </div>
               <div className='flex flex-col justify-center items-start'>
                 <div className='flex flex-row justify-end items-center gap-2'>
+                  <ViewCounter />
                   <p className="text-sm text-muted-foreground">
                     &copy; {new Date().getFullYear()} {name}. All rights reserved.
                   </p>
