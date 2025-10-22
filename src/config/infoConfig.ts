@@ -3,19 +3,18 @@ export * from './education'
 export * from './career'
 
 // personal info
-export const name = 'Derek Hu'
-export const headline = 'Teacher at Shanghai Soong Ching Ling School.'
+export const name = 'Xue Zi'
+export const headline = 'Student at Beijing University of Posts and Telecommunications.'
 export const introduction =
-  "Coucou Les Amis! My name is Derek Hu. I'm from Hubei and an alumnus of BUPT, UChicago, and Tsinghua. I’ve been teaching Computer Science at SCLS since 2020."
-export const email = 'tong.hu@scls-sh.org'
-export const githubUsername = 'derekhut'
+  "Coucou Les Amis! My name is Xue Zi. I'm from Beijing."
+export const email = '2550166270@qq.com'
+export const githubUsername = 'XueZi'
 
 // about page
 export const aboutMeHeadline = 'Who Are You and Why Should I Care?'
 export const aboutParagraphs = [
-  "Coucou Les Amis! My name is Derek Hu. I'm from Hubei and an alumnus of BUPT, UChicago, and Tsinghua. I’ve been teaching Computer Science at SCLS since 2020.",
-  'Currently I am working on a new course called AI Camp, an innovative course where high school students create real-world products and startups while exploring the frontiers of AI.',
-  "I started this blog to share the insights I learn every day. Most blogs focus on education in Artificial Intelligence and general computer science, while others share the life lessons I've learned.",
+  "Coucou Les Amis! My name is Xue Zi. I'm from Beijing.",
+  "I am currently a student at Beijing University of Posts and Telecommunications, where I am pursuing my passion for computer science and technology.",
 ]
 
 // blog
@@ -35,12 +34,12 @@ export const socialLinks: Array<SocialLinkType> = [
   {
     name: 'Tiktok',
     icon: 'tiktok',
-    href: 'https://www.tiktok.com/@harvard?lang=en',
+    href: 'https://www.douyin.com/user/MS4wLjABAAAA0bHQ-7Q6d64ziY6uGTNPj6IioOh9LxqbyZw9f9SbisjHBOpCecQMwj9shEDrJ-Mp?from_tab_name=main',
   },
   {
     name: 'Bilibili',
     icon: 'bilibili',
-    href: 'https://space.bilibili.com/349721082',
+    href: 'https://space.bilibili.com/499802523?spm_id_from=333.1007.0.0',
   },
 ]
 
