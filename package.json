@@ -46,6 +46,7 @@
     "react-icon-cloud": "^4.1.4",
     "react-tweet": "^3.2.1",
     "remark-gfm": "^4.0.0",
+    "simple-icons": "^15.17.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.15",
     "tailwindcss-animate": "^1.0.7",

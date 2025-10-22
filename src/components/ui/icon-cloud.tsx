@@ -4,11 +4,12 @@ import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import {
   Cloud,
-  fetchSimpleIcons,
   ICloud,
   renderSimpleIcon,
   SimpleIcon,
 } from "react-icon-cloud";
+import type { SimpleIcon as SimpleIconType } from 'simple-icons'
+import * as simpleIcons from 'simple-icons'
 
 export const cloudProps: Omit<ICloud, "children"> = {
   containerProps: {
@@ -40,7 +41,7 @@ export const cloudProps: Omit<ICloud, "children"> = {
 export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
-  const minContrastRatio = theme === "dark" ? 2 : 1.2;
+  const minContrastRatio = 1;
 
   return renderSimpleIcon({
     icon,
@@ -58,23 +59,39 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
 };
 
 export type DynamicCloudProps = {
-  iconSlugs: string[];
+  iconSlugs: {
+    slug: string
+    title: string
+  }[];
 };
 
-type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>;
+const getIcon = (slug: string): SimpleIconType => {
+  const iconName = `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}`
+  return (simpleIcons as any)[iconName]
+}
 
 export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
-  const [data, setData] = useState<IconData | null>(null);
   const { theme } = useTheme();
 
-  useEffect(() => {
-    fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
-  }, [iconSlugs]);
+  const data: SimpleIconType[] = useMemo(() => {
+    return iconSlugs.map((icon) => {
+      const simpleIcon = getIcon(icon.slug)
+      if (!simpleIcon) {
+        // Fallback or logging
+        console.warn(`Icon not found for slug: ${icon.slug}`)
+        return null
+      }
+      return {
+        ...simpleIcon,
+        path: simpleIcon.path,
+      }
+    }).filter(Boolean) as SimpleIconType[]
+  }, [iconSlugs])
 
   const renderedIcons = useMemo(() => {
     if (!data) return null;
 
-    return Object.values(data.simpleIcons).map((icon) =>
+    return data.map((icon) =>
       renderCustomIcon(icon, theme || "light"),
     );
   }, [data, theme]);

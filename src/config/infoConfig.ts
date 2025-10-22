@@ -41,30 +41,45 @@ export const socialLinks: Array<SocialLinkType> = [
     icon: 'bilibili',
     href: 'https://space.bilibili.com/499802523?spm_id_from=333.1007.0.0',
   },
+  {
+    name: 'GitHub',
+    icon: 'github',
+    href: 'https://github.com/Mist-wu',
+  },
+  {
+    name: 'WeChat',
+    icon: 'wechat',
+    href: 'https://mp.weixin.qq.com/s/C_aiWx88JBw_OvQ-IPsc2A',
+  }
 ]
 
 // https://simpleicons.org/
-export const techIcons = [
-  'typescript',
-  'javascript',
-  'supabase',
-  'cloudflare',
-  'java',
-  'oracle',
-  'mysql',
-  'react',
-  'nodedotjs',
-  'nextdotjs',
-  'prisma',
-  'postgresql',
-  'nginx',
-  'vercel',
-  'docker',
-  'git',
-  'github',
-  'visualstudiocode',
-  'androidstudio',
-  'ios',
-  'apple',
-  'wechat',
+export type TechIcon = {
+  slug: string
+  title: string
+}
+
+export const techIcons: TechIcon[] = [
+  { slug: 'typescript', title: 'TypeScript' },
+  { slug: 'javascript', title: 'JavaScript' },
+  { slug: 'supabase', title: 'Supabase' },
+  { slug: 'cloudflare', title: 'Cloudflare' },
+  { slug: 'java', title: 'Java' },
+  { slug: 'oracle', title: 'Oracle' },
+  { slug: 'mysql', title: 'MySQL' },
+  { slug: 'react', title: 'React' },
+  { slug: 'nodedotjs', title: 'Node.js' },
+  { slug: 'nextdotjs', title: 'Next.js' },
+  { slug: 'prisma', title: 'Prisma' },
+  { slug: 'postgresql', title: 'PostgreSQL' },
+  { slug: 'nginx', title: 'Nginx' },
+  { slug: 'vercel', title: 'Vercel' },
+  { slug: 'docker', title: 'Docker' },
+  { slug: 'git', title: 'Git' },
+  { slug: 'github', title: 'GitHub' },
+  { slug: 'visualstudiocode', title: 'VS Code' },
+  { slug: 'androidstudio', title: 'Android Studio' },
+  { slug: 'ios', title: 'iOS' },
+  { slug: 'apple', title: 'Apple' },
+  { slug: 'wechat', title: 'WeChat' },
 ]
