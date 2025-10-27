@@ -12,6 +12,7 @@ import avatarImage from '@/images/avatar.jpg'
 import { navItems } from '@/config/siteConfig'
 import { ThemeToggle } from '@/components/shared/ThemeToggle'
 import { GithubRepo } from '@/components/shared/GithubRepo'
+import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 import { name } from '@/config/infoConfig'
 import { ChevronDownIcon, XIcon } from 'lucide-react'
 
@@ -411,6 +412,8 @@ export function Header() {
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto flex flex-row items-center gap-2 md:mr-2">
                   <ThemeToggle />
+                  <LanguageSwitcher />
+                  <span style={{ width: 1.3 }} />
                   <GithubRepo />
                 </div>
               </div>
