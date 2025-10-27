@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import ViewCounter from '../shared/ViewCounter'
+import ViewCounter from '@/components/shared/ViewCounter'
 
 import { ContainerInner, ContainerOuter } from '@/components/layout/Container'
 // ... existing code ...

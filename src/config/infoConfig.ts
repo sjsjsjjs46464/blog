@@ -1,6 +1,6 @@
-export * from './projects'
-export * from './education'
-export * from './career'
+export * from '@/config/projects'
+export * from '@/config/education'
+export * from '@/config/career'
 
 // personal info
 export const name = 'Xue Zi'
