@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="flex h-full">
-        <Providers>
+        <Providers attribute="class" defaultTheme="system" enableSystem>
           <div className="flex w-full">
             <Layout>{children}</Layout>
           </div>
