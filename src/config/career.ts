@@ -16,4 +16,14 @@ export const careerList: Array<CareerItemType> = [
       start: '2025',
       end: 'present'
     }
+]
+  
+export const careerListZh: Array<CareerItemType> = [
+        {
+      company: '个人',
+      title: '独立开发者',
+      logo: 'coffee',
+      start: '2025',
+      end: '现在'
+    }
   ]
