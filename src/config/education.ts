@@ -20,7 +20,7 @@ export type EducationItemType = {
       end: 'present'
     },
     {
-      school: '57th High School of Beijing',
+      school: 'Beijing 57th High School',
       major: '',
       logo: 'college',
       start: '2021',
