@@ -10,6 +10,11 @@ export const introduction =
 export const email = '2550166270@qq.com'
 export const githubUsername = 'XueZi'
 
+export const nameZh = '驱不散的雾'
+export const headlineZh = '荒野乱斗大手子'
+export const introductionZh =
+  "我是驱不散的雾，来自北京。"
+
 // about page
 export const aboutMeHeadline = 'Who Are You and Why Should I Care?'
 export const aboutParagraphs = [
@@ -17,10 +22,20 @@ export const aboutParagraphs = [
   "I am currently a student at Beijing University of Posts and Telecommunications, where I am pursuing my passion for computer science and technology.",
 ]
 
+export const aboutMeHeadlineZh = '待添加内容'
+export const aboutParagraphsZh = [
+  "待添加内容",
+  "待添加内容",
+]
+
 // blog
 export const blogHeadLine = "What I've thinking about."
 export const blogIntro =
   "I've written something about AI, programming and life."
+
+export const blogHeadLineZh = "我的一些想法"
+export const blogIntroZh =
+  "我写了一些关于人工智能、编程和生活的文章。"
 
 // social links
 export type SocialLinkType = {
