@@ -32,6 +32,7 @@ export function Footer() {
   const lang = useLanguage()
   const currentFooterItems = lang === 'zh' ? footerItemsZh : footerItems
   const currentName = lang === 'zh' ? nameZh : name
+  const copyrightText = lang === 'zh' ? '版权所有' : 'All rights reserved'
 
   return (
     <footer className="mt-32 flex-none">
@@ -48,7 +49,7 @@ export function Footer() {
                 <div className='flex flex-row justify-end items-center gap-2'>
                   <ViewCounter />
                   <p className="text-sm text-muted-foreground">
-                    &copy; {new Date().getFullYear()} {currentName}. All rights reserved.
+                    &copy; {new Date().getFullYear()} {currentName}. {copyrightText}.
                   </p>
                   <ThemeToggle />
                 </div>
