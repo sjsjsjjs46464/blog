@@ -11,7 +11,7 @@ export const email = '2550166270@qq.com'
 export const githubUsername = 'XueZi'
 
 export const nameZh = '驱不散的雾'
-export const headlineZh = '北京邮电大学学生'
+export const headlineZh = '荒野乱斗老资历'
 export const introductionZh =
   "你好！我是驱不散的雾，来自北京。"
 
@@ -22,10 +22,10 @@ export const aboutParagraphs = [
   "I am currently a student at Beijing University of Posts and Telecommunications, where I am pursuing my passion for computer science and technology.",
 ]
 
-export const aboutMeHeadlineZh = '待添加内容'
+export const aboutMeHeadlineZh = '驱不散的雾为什么是神'
 export const aboutParagraphsZh = [
-  "待添加内容",
-  "待添加内容",
+  "#2VQ8YQG0",
+  "我艾德加506杯你说我不会玩？",
 ]
 
 // blog
