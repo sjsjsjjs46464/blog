@@ -1,12 +1,9 @@
 "use client"
 
-
 import { Briefcase } from '@phosphor-icons/react'
-import { CareerItemType, careerList } from '@/config/infoConfig'
+import { CareerItemType, careerList, careerListZh } from '@/config/infoConfig'
 import { CustomIcon} from '@/components/shared/CustomIcon'
-
-
-
+import { useLanguage } from '@/contexts/LanguageContext'
 
 function CareerItem({ careerItem }: { careerItem: CareerItemType }) {
   return (
@@ -36,14 +33,19 @@ function CareerItem({ careerItem }: { careerItem: CareerItemType }) {
 }
 
 export default function Career() {
+  const lang = useLanguage()
+  const isZh = lang === 'zh'
+  const currentCareerList = isZh ? careerListZh : careerList
+  const title = isZh ? '工作经历' : 'Work'
+
   return (
     <div className="rounded-2xl border border-muted shadow-sm p-6">
       <h2 className="flex text-sm font-semibold">
         <Briefcase size={24} weight="duotone" />
-        <span className="ml-3">Work</span>
+        <span className="ml-3">{title}</span>
       </h2>
       <ol className="mt-6 space-y-4">
-        {careerList.map((careerItem, careerItemIndex) => (
+        {currentCareerList.map((careerItem, careerItemIndex) => (
           <CareerItem key={careerItemIndex} careerItem={careerItem} />
         ))}
       </ol>

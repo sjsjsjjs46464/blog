@@ -2,11 +2,9 @@
 
 
 import { Student } from '@phosphor-icons/react'
-import { EducationItemType, educationList } from '@/config/infoConfig'
+import { EducationItemType, educationList, educationListZh } from '@/config/infoConfig'
 import { CustomIcon } from '@/components/shared/CustomIcon'
-
-
-
+import { useLanguage } from '@/contexts/LanguageContext'
 
 function EducationItem({ educationItem }: { educationItem: EducationItemType }) {
   return (
@@ -36,16 +34,19 @@ function EducationItem({ educationItem }: { educationItem: EducationItemType }) 
 }
 
 export default function Education() {
-
+  const lang = useLanguage()
+  const isZh = lang === 'zh'
+  const currentEducationList = isZh ? educationListZh : educationList
+  const title = isZh ? '教育背景' : 'Education'
 
   return (
     <div className="rounded-2xl border border-muted shadow-sm p-6">
       <h2 className="flex text-sm font-semibold">
         <Student size={24} weight="duotone" />
-        <span className="ml-3">Education</span>
+        <span className="ml-3">{title}</span>
       </h2>
       <ol className="mt-6 space-y-4">
-        {educationList.map((educationItem, educationItemIndex) => (
+        {currentEducationList.map((educationItem, educationItemIndex) => (
           <EducationItem key={educationItemIndex} educationItem={educationItem} />
         ))}
       </ol>
