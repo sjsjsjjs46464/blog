@@ -71,7 +71,12 @@ const getIcon = (slug: string): SimpleIconType => {
 }
 
 export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const data: SimpleIconType[] = useMemo(() => {
     return iconSlugs.map((icon) => {
@@ -89,12 +94,14 @@ export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
   }, [iconSlugs])
 
   const renderedIcons = useMemo(() => {
-    if (!data) return null;
+    if (!mounted || !data) return null;
 
     return data.map((icon) =>
-      renderCustomIcon(icon, theme || "light"),
+      renderCustomIcon(icon, resolvedTheme || theme || "light"),
     );
-  }, [data, theme]);
+  }, [data, theme, resolvedTheme, mounted]);
+
+  if (!mounted) return null;
 
   return (
     // @ts-ignore
