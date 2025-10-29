@@ -22,6 +22,8 @@ function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+import { useLanguage } from '@/contexts/LanguageContext'
+
 export function BlogLayout({
   blog,
   children,
@@ -31,6 +33,7 @@ export function BlogLayout({
 }) {
   let router = useRouter()
   let { previousPathname } = useContext(AppContext)
+  const lang = useLanguage();
 
   return (
     <Container className="mt-16 lg:mt-32">
@@ -56,7 +59,7 @@ export function BlogLayout({
                 className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
               >
                 <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                <span className="ml-3">{formatDate(blog.date)}</span>
+                <span className="ml-3">{formatDate(blog.date, lang)}</span>
                 <span className="mx-2">·</span>
                 <span>{blog.author}</span>
               </time>

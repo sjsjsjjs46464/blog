@@ -1,12 +1,14 @@
+'use client'
+
 import Link from 'next/link'
 import ViewCounter from '@/components/shared/ViewCounter'
 
 import { ContainerInner, ContainerOuter } from '@/components/layout/Container'
-// ... existing code ...
-import { footerItems } from '@/config/siteConfig'
+import { footerItems, footerItemsZh } from '@/config/siteConfig'
 import { ThemeToggle } from '@/components/shared/ThemeToggle'
-import { name } from '@/config/infoConfig'
+import { name, nameZh } from '@/config/infoConfig'
 import SocialLinks from '@/components/home/SocialLinks'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 
 function NavLink({
@@ -27,6 +29,10 @@ function NavLink({
 }
 
 export function Footer() {
+  const lang = useLanguage()
+  const currentFooterItems = lang === 'zh' ? footerItemsZh : footerItems
+  const currentName = lang === 'zh' ? nameZh : name
+
   return (
     <footer className="mt-32 flex-none">
       <ContainerOuter>
@@ -34,7 +40,7 @@ export function Footer() {
           <ContainerInner>
             <div className="flex flex-col items-center justify-between gap-6 sm:flex-row sm:items-start">
               <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium">
-                {footerItems.map((item) => (
+                {currentFooterItems.map((item) => (
                   <NavLink key={item.name} href={item.href}>{item.name}</NavLink>
                 ))}
               </div>
@@ -42,7 +48,7 @@ export function Footer() {
                 <div className='flex flex-row justify-end items-center gap-2'>
                   <ViewCounter />
                   <p className="text-sm text-muted-foreground">
-                    &copy; {new Date().getFullYear()} {name}. All rights reserved.
+                    &copy; {new Date().getFullYear()} {currentName}. All rights reserved.
                   </p>
                   <ThemeToggle />
                 </div>

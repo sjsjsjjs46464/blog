@@ -10,10 +10,10 @@ export const introduction =
 export const email = '2550166270@qq.com'
 export const githubUsername = 'XueZi'
 
-export const nameZh = '驱不散的雾'
-export const headlineZh = '荒野乱斗大手子'
+export const nameZh = '薛子'
+export const headlineZh = '北京邮电大学学生'
 export const introductionZh =
-  "我是驱不散的雾，来自北京。"
+  "你好！我是薛子，来自北京。"
 
 // about page
 export const aboutMeHeadline = 'Who Are You and Why Should I Care?'

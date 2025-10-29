@@ -3,8 +3,9 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { mdxComponents } from '@/components/shared/MdxComponents'
 
-export async function getMDXContent(slug: string) {
-  const filePath = path.join(process.cwd(), 'src/content/blog', `${slug}.mdx`)
+export async function getMDXContent(slug: string, lang: 'en' | 'zh' = 'en') {
+  const contentDir = lang === 'zh' ? 'src/contentZh/blog' : 'src/content/blog';
+  const filePath = path.join(process.cwd(), contentDir, `${slug}.mdx`)
   const source = await fs.readFile(filePath, 'utf-8')
   
   const { content } = await compileMDX({

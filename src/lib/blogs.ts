@@ -13,9 +13,11 @@ export type BlogType = {
 
 async function importBlog(
   blogFilename: string,
+  lang: 'en' | 'zh' = 'en'
 ): Promise<BlogType> {
+  const contentDir = lang === 'zh' ? 'src/contentZh/blog' : 'src/content/blog';
   const source = await fs.readFile(
-    path.join(process.cwd(), 'src/content/blog', blogFilename),
+    path.join(process.cwd(), contentDir, blogFilename),
     'utf-8'
   )
   
@@ -28,12 +30,13 @@ async function importBlog(
   }
 }
 
-export async function getAllBlogs() {
+export async function getAllBlogs(lang: 'en' | 'zh' = 'en') {
+  const contentDir = lang === 'zh' ? './src/contentZh/blog' : './src/content/blog';
   let blogFileNames = await glob('*.mdx', {
-    cwd: './src/content/blog',
+    cwd: contentDir,
   })
 
-  let blogs = await Promise.all(blogFileNames.map(importBlog))
+  let blogs = await Promise.all(blogFileNames.map((file) => importBlog(file, lang)))
 
   return blogs.sort((a, z) => {
     const aDate = a.date ? +new Date(a.date) : 0;
@@ -42,11 +45,11 @@ export async function getAllBlogs() {
   })
 }
 
-export async function getBlogBySlug(slug: string): Promise<BlogType | null> {
+export async function getBlogBySlug(slug: string, lang: 'en' | 'zh' = 'en'): Promise<BlogType | null> {
   try {
     // 移除可能存在的 .mdx 扩展名
     const cleanSlug = slug.replace(/\.mdx$/, '')
-    return await importBlog(`${cleanSlug}.mdx`)
+    return await importBlog(`${cleanSlug}.mdx`, lang)
   } catch (error) {
     console.error(`Failed to load blog with slug: ${slug}`, error)
     return null

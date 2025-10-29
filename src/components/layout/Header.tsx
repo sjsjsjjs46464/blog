@@ -9,11 +9,12 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/layout/Container'
 import avatarImage from '@/images/avatar.jpg'
-import { navItems } from '@/config/siteConfig'
+import { navItems, navItemsZh } from '@/config/siteConfig'
 import { ThemeToggle } from '@/components/shared/ThemeToggle'
 import { GithubRepo } from '@/components/shared/GithubRepo'
 import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
-import { name } from '@/config/infoConfig'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { name, nameZh } from '@/config/infoConfig'
 import { ChevronDownIcon, XIcon } from 'lucide-react'
 
 import TypingAnimation from "@/components/ui/typing-animation";
@@ -37,6 +38,10 @@ function MobileNavItem({
 function MobileNavigation(
   props: React.ComponentPropsWithoutRef<typeof Popover>,
 ) {
+  const lang = useLanguage()
+  const currentNavItems = lang === 'zh' ? navItemsZh : navItems
+  const currentName = lang === 'zh' ? nameZh : name
+
   return (
     <Popover {...props}>
       <Popover.Button className="group flex items-center rounded-full px-4 py-2 text-sm font-medium shadow-lg ring-1 ring-muted backdrop-blur ">
@@ -73,12 +78,12 @@ function MobileNavigation(
                 <XIcon className="h-6 w-6 text-muted-foreground" />
               </Popover.Button>
               <h2 className="text-sm font-medium text-muted-foreground">
-                {name}
+                {currentName}
               </h2>
             </div>
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base dark:divide-zinc-100/5">
-                {navItems.map((item) => (
+                {currentNavItems.map((item) => (
                   <MobileNavItem key={item.name} href={item.href}>{item.name}</MobileNavItem>
                 ))}
               </ul>
@@ -120,10 +125,13 @@ function NavItem({
 }
 
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
+  const lang = useLanguage()
+  const currentNavItems = lang === 'zh' ? navItemsZh : navItems
+
   return (
     <nav {...props}>
       <ul className="flex rounded-full px-3 text-sm font-medium bg-card ring-1 ring-muted shadow-md backdrop-blur">
-        {navItems.map((item, index) => (
+        {currentNavItems.map((item, index) => (
           <Fragment key={item.name}>
             {index > 0 && (
               <li className="flex items-center">
@@ -153,6 +161,10 @@ function AvatarContainer({
 }: React.ComponentPropsWithoutRef<'div'> & {
   showName?: boolean
 }) {
+  const lang = useLanguage()
+  const currentName = lang === 'zh' ? nameZh : name
+  const homeHref = lang === 'zh' ? '/zh' : '/'
+
   return (
     <div className='flex flex-row items-center gap-2'>
       <div
@@ -164,11 +176,11 @@ function AvatarContainer({
       />
       {showName && (
         <Link
-          href="/"
+          href={homeHref}
           aria-label="Home"
           className='pointer-events-auto'
         >
-          <div className="text-md font-semibold capitalize">{name}</div>
+          <div className="text-md font-semibold capitalize">{currentName}</div>
         </Link>
       )}
     </div>
