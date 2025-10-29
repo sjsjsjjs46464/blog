@@ -49,37 +49,37 @@ export const navItems: Array<NavItemType> = [
 export const footerItemsZh: Array<NavItemType> = [
   {
     name: '首页',
-    href: '/'
+    href: '/zh'
   },
   {
     name: '关于',
-    href: '/about'
+    href: '/zh/about'
   },
   {
     name: '项目',
-    href: '/projects'
+    href: '/zh/projects'
   },
   {
     name: '博客',
-    href: '/blogs'
+    href: '/zh/blogs'
   }
 ]
 
 export const navItemsZh: Array<NavItemType> = [
   {
     name: '首页',
-    href: '/'
+    href: '/zh'
   },
   {
     name: '关于',
-    href: '/about'
+    href: '/zh/about'
   },
   {
     name: '项目',
-    href: '/projects'
+    href: '/zh/projects'
   },
   {
     name: '博客',
-    href: '/blogs'
+    href: '/zh/blogs'
   }
 ]

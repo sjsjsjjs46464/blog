@@ -6,3 +6,11 @@ export function formatDate(dateString: string) {
     timeZone: 'UTC',
   })
 }
+
+export function formatDateZh(dateString: string): string {
+  const parts = dateString.split('-').map(part => parseInt(part, 10));
+  const year = parts[0];
+  const month = parts[1];
+  const day = parts[2];
+  return `${year}年${month}月${day}日`;
+}
