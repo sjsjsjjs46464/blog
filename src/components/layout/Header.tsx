@@ -194,9 +194,11 @@ function Avatar({
 }: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
   large?: boolean
 }) {
+  const lang = useLanguage()
+  const homeHref = lang === 'zh' ? '/zh' : '/'
   return (
     <Link
-      href="/"
+      href={homeHref}
       aria-label="Home"
       className={clsx(className, 'pointer-events-auto')}
       {...props}
@@ -215,8 +217,17 @@ function Avatar({
   )
 }
 
+const typingStepsZh = [
+  'n', 'ni', '你', '你h', '你ha', '你hao', '你好', '你好,', '你好, ', '你好, w', '你好, wo', '你好, 我',
+  '你好, 我s', '你好, 我sh', '你好, 我是', '你好, 我是q', '你好, 我是qu', '你好, 我是驱', '你好, 我是驱b', '你好, 我是驱bu', '你好, 我是驱不',
+  '你好, 我是驱不s', '你好, 我是驱不sa', '你好, 我是驱不san', '你好, 我是驱不散', '你好, 我是驱不散d', '你好, 我是驱不散de', '你好, 我是驱不散的',
+  '你好, 我是驱不散的w', '你好, 我是驱不散的wu', '你好, 我是驱不散的雾'
+]
+
 export function Header() {
-  let isHomePage = usePathname() === '/'
+  const pathname = usePathname()
+  const lang = pathname.startsWith('/zh') ? 'zh' : 'en'
+  const isHomePage = pathname === '/' || pathname === '/zh'
 
   let headerRef = useRef<React.ElementRef<'div'>>(null)
   let avatarRef = useRef<React.ElementRef<'div'>>(null)
@@ -380,12 +391,22 @@ export function Header() {
                         transform: 'var(--avatar-hi-transform)'
                       }}
                     >
-                      Hi,{' '}
-                      <TypingAnimation
-                        className="text-3xl md:text-6xl font-bold tracking-tight"
-                        text={`I'm ${name} `}
-                        duration={150}
-                      />
+                      {lang === 'en' ? (
+                        <>
+                          Hi,{' '}
+                          <TypingAnimation
+                            className="text-3xl md:text-6xl font-bold tracking-tight"
+                            text={`I'm ${name} `}
+                            duration={150}
+                          />
+                        </>
+                      ) : (
+                        <TypingAnimation
+                          className="text-3xl md:text-6xl font-bold tracking-tight"
+                          steps={typingStepsZh}
+                          duration={150}
+                        />
+                      )}
                       👋
                     </div>
                   </div>
