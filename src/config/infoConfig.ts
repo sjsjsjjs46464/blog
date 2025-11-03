@@ -11,7 +11,7 @@ export const email = '2550166270@qq.com'
 export const githubUsername = 'XueZi'
 
 export const nameZh = '驱不散的雾'
-export const headlineZh = '荒野乱斗老资历'
+export const headlineZh = '荒野乱斗资深玩家'
 export const introductionZh =
   "你好！我是驱不散的雾，来自北京。"
 
