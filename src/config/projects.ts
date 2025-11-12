@@ -59,7 +59,7 @@ export const projects: Array<ProjectItemType> = [
   {
     name: 'WXchat',
     description: 'A mini program designed to provide various campus services for students.',
-    link: { href: 'https://github.com/Mist-wu/WXchatAI', label: 'GitHub Repository' },
+    link: { href: 'https://github.com/Mist-wu/chat_server', label: 'GitHub Repository' },
     tags: ['Python', 'wxauto', 'Flask', "MySQL"],
   },
 ]
@@ -71,7 +71,7 @@ export const projectsZh: Array<ProjectItemType> = [
   {
     name: 'WXchat',
     description: '接入AI的公众号',
-    link: { href: 'https://github.com/Mist-wu/WXchatAI', label: 'GitHub Repository' },
+    link: { href: 'https://github.com/Mist-wu/chat_server', label: 'GitHub Repository' },
     tags: ['Python', 'wxauto', 'Flask', "MySQL"],
   },
 ]
