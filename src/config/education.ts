@@ -30,15 +30,15 @@ export type EducationItemType = {
   
   export const educationListZh: Array<EducationItemType> = [
     {
-      school: '北京邮电大学',
-      major: '人工智能与计算机科学',
+      school: '中国石油大学',
+      major: '计算机网络技术',
       logo: 'college',
       start: '2024',
       end: '现在'
     },
     {
-      school: '北京市57中学',
-      major: '',
+      school: '中国石油大学附属中学',
+      major: 'none',
       logo: 'college',
       start: '2021',
       end: '2024'

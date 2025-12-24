@@ -1,0 +1,75 @@
+---
+title: 'Windows Troubleshooting: How to Fix Missing Desktop Icons (NoDesktop)'
+description: 'Step-by-step guide: Resolve the policy restriction preventing desktop icons from appearing by modifying registry permissions and keys.'
+date: '2025-12-20'
+---
+
+If your Windows desktop icons have suddenly disappeared and cannot be restored through standard settings, this is usually due to a registry policy restriction (NoDesktop) being accidentally enabled. Below are the detailed steps to fix this issue by modifying the registry with administrator privileges.
+
+## Step 1: Get User SID and Enter Admin Mode
+
+First, we need to obtain the Security Identifier (SID) of the affected user to locate the correct entry in the registry.
+
+1. Click **Start** in the bottom left corner, type `cmd`.
+2. Right-click **Command Prompt** and select **Run as administrator**.
+3. **Note**: Ensure the window title says `Administrator: Command Prompt`.
+4. Type the following command in the black box and press Enter:
+
+    wmic useraccount where name='candidate1' get sid
+
+> **Tip**: Note down the long code starting with `S-1-5-21` displayed on the screen (this is the SID); you will need it in the next step.
+
+## Step 2: Locate the Registry Target Path
+
+1. Continue in the command prompt, type `regedit`, and press Enter to open the Registry Editor.
+2. In the left-hand tree list, **do not expand HKEY_CURRENT_USER (this is a common trap)**.
+3. Please expand the path in the following order:
+
+   - `HKEY_USERS`
+   - `<The long SID you just found>`
+   - `Software`
+   - `Microsoft`
+   - `Windows`
+   - `CurrentVersion`
+   - `Policies`
+   - `Explorer`
+
+## Step 3: Forcefully Take Ownership (Unlock Permissions)
+
+Since this registry key is often locked or system-protected, direct deletion might fail. You must elevate permissions first.
+
+1. Right-click the **Explorer** folder on the left.
+2. Select **Permissions** -> **Advanced**.
+3. Click **Change** next to **Owner** at the top.
+4. In the text box, type `Administrators` (ensure the plural **s**), then click **OK**.
+5. Check the box **Replace owner on subcontainers and objects** below the Owner field.
+6. Click **Apply** -> **OK**.
+7. Back in the small Permissions window, select **Administrators** from the list, and check **Full Control** at the bottom.
+8. Click **OK** to save settings.
+
+## Step 4: Delete the Faulty Key
+
+Now that you have modification permissions, you can delete the policy item causing the issue.
+
+1. In the right-hand window, find the item named `NoDesktop`.
+   - *Explanation: This is the culprit causing the desktop to disappear; a value of 1 means the desktop is disabled.*
+2. Right-click it and select **Delete**.
+3. Click **Yes** to confirm.
+
+## Step 5: Restart to Apply Changes
+
+After modifying the registry, you need to restart Windows Explorer or sign out for the changes to take effect. Return to the black administrator command prompt window and run the following commands in order:
+
+1. Force close Windows Explorer:
+
+    taskkill /f /im explorer.exe
+
+2. Attempt to restart Windows Explorer (if the desktop does not appear immediately):
+
+    start explorer.exe
+
+3. Or sign out the current user to completely refresh the configuration:
+
+    shutdown /l
+
+After completing these steps, your desktop icons should be restored to normal.

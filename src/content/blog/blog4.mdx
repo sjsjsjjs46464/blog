@@ -1,0 +1,70 @@
+---
+title: 'LRTimelapse (LRT) Workflow: Deflickering & Smooth Transitions'
+description: 'A comprehensive guide based on top-rated tutorials, covering keyframes, deflickering, and exclusive practical tips for time-lapse photography.'
+date: '2025-12-22'
+---
+
+LRTimelapse (LRT) is the ultimate tool for time-lapse post-processing, especially for "Holy Grail" (Day-to-Night) sequences where lighting changes drastically. It is currently the best solution for deflickering and creating smooth transitions. This guide summarizes the core workflows from the top 3 most-viewed tutorials on Bilibili, helping you master it quickly.
+
+## Core Workflow Summary (Based on Top Tutorials)
+
+The core logic of LRT is not "editing photos directly" but **managing metadata**. It works in tandem with Adobe Lightroom (LR) by modifying the parameter files (XMP) of your photos to calculate smooth transition values for the frames in between.
+
+### Stage 1: LRT Initialization & Keyframes
+
+1.  **Import Footage**: Open LRT, navigate to the folder containing your RAW sequence in the left directory tree. LRT will automatically load and read the metadata.
+2.  **Keyframes Wizard**:
+    -   Click the blue button **"Keyframes Wizard"**.
+    -   Adjust the sliders based on how much the light changes. If the lighting changes drastically (e.g., sunset), increase the number of keyframes; if stable, just one at the start and one at the end is sufficient.
+    -   Click **"Save"** to save the metadata.
+
+### Stage 2: Lightroom Grading (LR Intervention)
+
+1.  **Import to LR**: Open Lightroom Classic and drag the folder you just worked on into the Library (ensure "Read Metadata" is active).
+2.  **Filter Keyframes**: In the bottom right filter of LR, select **"LRT Keyframes"** (usually marked with 4 stars). This will hide all photos except the keyframes you marked in LRT.
+3.  **Color Grading**:
+    -   Edit the first keyframe.
+    -   Edit the last keyframe.
+    -   If there are intermediate keyframes, adjust them according to the lighting at that specific moment.
+4.  **Sync Metadata**: Select all keyframes and **Save Metadata to Files** (`Ctrl + S` or `Cmd + S`).
+
+### Stage 3: Smooth Transition & Deflicker in LRT
+
+1.  **Reload Data**: Go back to LRT and click **"Reload"** to read the new parameters you just saved in LR.
+2.  **Auto Transition**: Click **"Auto Transition"**. LRT will mathematically calculate the exposure, white balance, and other parameters for every single frame between your keyframes, creating smooth curves.
+3.  **Visual Previews**: This is the most critical step. Click **"Visual Previews"**. LRT will call the DNG Converter to generate a video preview of the edited sequence.
+4.  **Visual Deflicker**:
+    -   Observe the pink curve (Luminance curve). If it looks jagged or spikey, it means there is flickering.
+    -   Drag the **"Smoothing"** slider and click **"Apply"**.
+    -   Repeat this step until the pink curve becomes smooth.
+
+### Stage 4: Export
+
+1.  Once finished in LRT, do not export the video from within LRT (optional).
+2.  Return to Lightroom, select all photos, and choose **Read Metadata from Files**.
+3.  You will now see that every single photo in the sequence has been adjusted with the smooth parameters calculated by LRT.
+4.  Use the **LRT Export** plugin or simply export as a JPG sequence.
+
+---
+
+## 💡 Personal Practical Tips (Exclusive Experience)
+
+Please pay attention to the following three tips to avoid 90% of the common pitfalls beginners face:
+
+### 1. Must Work with Adobe DNG Converter
+LRT is not a completely standalone software. When generating "Visual Previews," it **relies on the Adobe DNG Converter**.
+-   **Note**: You must download and install the latest version of Adobe DNG Converter (Free) from the Adobe website; otherwise, LRT cannot generate previews, and you cannot perform visual deflickering.
+
+### 2. Understand the Essence of LRT: A Transition Tool
+Do not treat LRT as a video editor.
+-   **Core Principle**: LRT is like adding "markers" (keyframes) to a photo sequence. You grade these markers in LR, and LRT handles the **math** to calculate the values for the hundreds of photos in between.
+-   It solves a mathematical problem (smoothing parameters), not an artistic one.
+
+### 3. Final Composition Must Use AE/PR
+LRT usually outputs a JPG/TIFF sequence (or an intermediate video file). To get the final polished video, you **must combine it with video editing software**.
+-   **Recommended Flow**: LRT Process -> Export JPG Sequence -> Import to Adobe After Effects (AE) or Premiere Pro (PR) -> Interpret Footage as "Image Sequence" -> Add Motion Blur, Music, Speed Ramping -> Final Render.
+
+#### ⚠️ Extra Important Warning: PR & RAW Sequences
+This is a mistake many people make: **Premiere Pro (PR) cannot directly import RAW photo sequences for editing.**
+-   **AE vs. PR**: After Effects (AE) has the built-in Camera Raw plugin and can read RAW sequences directly; PR cannot.
+-   **Solution**: Before editing in PR, you **must** export your processed photos from Lightroom as a **JPG** or **TIFF** sequence, and then drag those into PR for editing.

@@ -104,19 +104,12 @@ export const activitiesIntroZh = "个人兴趣和社区贡献。"
 
 export const activitiesZh: Array<ActivityItemType> = [
   {
-    name: '自行车俱乐部成员',
+    name: '摄影团队',
     description:
-      '参与每周的骑行活动，倡导健康的生活方式。',
+      '参加每期组织的外摄活动',
     date: '2024 - 现在',
     location: '北京',
     link: '',
   },
-  {
-    name: '北京志愿者',
-    description:
-      '我定期参加飞翔吧少年组织的志愿者活动，在北京周边的山脉中徒步旅行，并清理沿途遗留的垃圾。',
-    date: '2016 - 现在',
-    location: '北京',
-    link: 'https://www.bv2008.cn/app/org/view.php?id=BJm44rzq3TxFZ',
-  },
+  
 ]
